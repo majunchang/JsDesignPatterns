@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    class Product {
+        constructor(name) {
+            this.name = name
+        }
+
+        sayHi() {
+            console.log(this.name);
+        }
+    }
+
+
+    class Creator {
+        constructor(name) {
+
+        }
+
+        // 声明为静态方法  可以直接通过类来调用
+        static create(name) {
+            //  也可以将赋值逻辑写这里
+            //  在这里 使用了另外一个类 去处理  避免逻辑的耦合
+            // var obj = {}
+            // obj.name = name
+            // return obj
+            return new Product(name)
+        }
+    }
+
+
+    let c1 = Creator.create('tom')
+    c1.sayHi()
+
+
+</script>

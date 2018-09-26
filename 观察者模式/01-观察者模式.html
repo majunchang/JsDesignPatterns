@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //  状态变化之后  触发所有观察者对象
+    class  Subject{
+        constructor(){
+            this.state = 0
+            this.observers = []
+        }
+        getState(){
+            return this.state
+        }
+        setState(state){
+            this.state = state
+            this.notifyAllObservers()
+        }
+        notifyAllObservers(){
+            this.observers.forEach(singleObserver=>{
+                singleObserver.update()
+            })
+        }
+        attach(singleObserver){
+            this.observers.push(singleObserver)
+        }
+    }
+
+
+    // 观察者对象
+    class Observer{
+        constructor(name,subject){
+            this.name =name
+            this.subject = subject
+            this.subject.attach(this)
+        }
+        update(){
+            console.log('状态更新了');
+            console.log(this.name+this.subject.state);
+            console.log(this.subject);
+            console.log('=============');
+        }
+    }
+
+    let s = new Subject()
+
+    let o1 = new Observer('o1',s)
+    let o2 = new Observer('o2',s)
+    s.setState(1)
+
+
+
+
+
+
+</script>

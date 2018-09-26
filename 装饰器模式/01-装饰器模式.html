@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//  装饰器模式： 为对象添加新功能  不改变原有的结构和功能
+
+// 画一个普通的圆形
+    class  Circle{
+        draw(){
+            console.log('我画了一个普通的圆形');
+        }
+    }
+
+
+    // 装饰器
+    class Decorator{
+        constructor(circle){
+            this.circle = circle
+        }
+        draw(){
+            this.circle.draw()
+            this.setBorder()
+        }
+        setBorder(){
+            console.log('设置红色边框');
+        }
+    }
+
+    let circle = new Circle()
+    circle.draw()
+
+    let decor = new Decorator(circle)
+    decor.draw()
+
+
+    //  https://www.cnblogs.com/wenxiangxu/p/9134549.html  React中支持装饰器@语法
+    //  react中装饰器原理
+    // @Decorattor
+    // class A{}
+    //
+    // // 等同于
+    // A = Decorattor(A) || A
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let SingleTest = function () {
+        let instance = null
+
+        function _init(ops) {
+            for (let k in ops) {
+                this[k] = ops[k]
+            }
+        }
+
+        return function (args) {
+            //  调用call的时机不一样 最终的打印结果也不一样
+            if (!instance) {
+                instance = this
+                _init.call(instance, args)
+            }
+            // _init.call(instance, args)
+            return instance
+        }
+    }()
+
+    let S1 = new SingleTest({name: 'xiaoming'})
+    let S2 = new SingleTest({name: 'guangtouqiang'})
+
+    console.log(S1 === S2);
+    console.log(S1.name);
+    // console.log(S2.name);
+
+
+</script>

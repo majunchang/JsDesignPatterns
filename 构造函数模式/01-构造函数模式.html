@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数 ；
+任何函数，如果不通过 new 操作符来调用，那它跟普通函数也没有什么两样。
+    */
+    function Person(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = function () {
+            console.log(this.name);
+        }
+    }
+
+    /*
+
+     */
+    var person = new Person('Nicholas', 29, 'Software Engineer');
+    person.sayName();
+
+    Person('Greg', 27, 'Doctor');//this-->window
+    window.sayName();//'Greg'
+</script>

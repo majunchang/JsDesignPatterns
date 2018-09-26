@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    class Person {
+        constructor(name, age) {
+            this.name = name
+            this.age = age
+        }
+
+        getName() {
+            console.log(this.name);
+        }
+    }
+
+    let p = new Person('小明')
+    p.getName()
+
+    //  student 继承Person
+    class Student extends Person {
+        constructor(name, age, number) {
+            super(name, age)
+            this.number = number
+        }
+
+        getName() {
+            console.log(this.name, this.age, this.number);
+        }
+    }
+
+    let s1 = new Student('小白', '11', '90')
+    let s2 = new Student('小红', '12', '99')
+
+    s1.getName()
+    s2.getName()
+
+    console.log(s1 === s2); // false
+
+    //  s1和s2 的getName  都是Student类原型对象上的方法
+    console.log(s1.getName === s2.getName); // true
+    // s1 为Student类的实例化对象
+    console.log('实例化对象与类的原型');
+    console.log(s1.__proto__ === Student.prototype); // true
+    console.log(s1.__proto__.__proto__ === p.__proto__); // true
+
+    console.log('子类的__proto__属性');
+    console.log(s1.__proto__ === p); // false
+    // 构造函数的继承指向父类
+    console.log(Student.__proto__ === Person); // true
+    // 子类原型的继承指向父类的原型
+    console.log(Student.prototype.__proto__ === Person.prototype); // true
+
+
+</script>

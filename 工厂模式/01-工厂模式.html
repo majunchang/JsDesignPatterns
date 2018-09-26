@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    工厂模式就是抽象了具体对象细节过程的方法。这个方法以函数的形式封装实现的细节。实现了重复调用的功能。
+     */
+//  工厂模式
+    function CreatePerson(name,age) {
+        var obj = {
+            name:name,
+            age:age,
+            sayName:function () {
+                console.log(
+                    this.name
+                );
+            }
+        }
+        console.log(this);
+        return obj
+    }
+
+    var p1 =  CreatePerson('tom',14)
+    var p2 =  CreatePerson('lihong',18)
+    console.log(p1);
+    console.log(p2);
+    p1.sayName()
+    p2.sayName()
+    console.log(p1.sayName === p2.sayName);
+    // console.log(p1 instanceof CreatePerson.prototype);
+    
+
+
+
+</script>

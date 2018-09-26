@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    let SingleTest = (function () {
+        let instance = null
+        return function () {
+            if(!instance){
+                instance = this
+            }
+            console.log(this);
+            return instance
+        }
+    })()
+
+    let i1=new SingleTest();
+    let i2=new SingleTest();
+    console.log(i1===i2);
+
+
+</script>
